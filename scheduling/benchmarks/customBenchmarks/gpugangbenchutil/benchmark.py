@@ -233,6 +233,7 @@ class GangEvalBenchmark(SchedulerBenchmark):
             current_dir=self._build_dir,
             environment=environment,
             wrapped_environment=wrapped_environment,
+            ignore_ret_codes=(1, 139),
             print_output=True,
         )
 

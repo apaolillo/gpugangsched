@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LIBSMCTRL_PATH="/home/muut/Documents/github/bachelorProefCode/commonLib/libsmctrl/"
+LIBSMCTRL_PATH="../commonLib/libsmctrl/"
 
 #ls -l $LIBSMCTRL_PATH
 
@@ -11,4 +11,6 @@ nvcc -g -G -o main main.cu tasks/task.cu schedulers/schedulerBase/scheduler.cu s
   jobs/jobLaunchInformation/matrixMultiplicationJobLaunchInformation.cu \
   jobs/kernels/printKernel.cu jobs/jobBase/job.cu jobs/printJob/printJob.cu jobs/busyJob/busyJob.cu jobs/vectorAddJob/vectorAddJob.cu jobs/matrixMultiplicationJob/matrixMultiplicationJob.cu \
   common/helpFunctions.cu common/deviceProps.cu common/maskElement.cu \
+
   -I${LIBSMCTRL_PATH} -lsmctrl -lcuda -L${LIBSMCTRL_PATH}
+  

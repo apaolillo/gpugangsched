@@ -22,14 +22,13 @@ job_types = [
     "busy",
 ]
 
-
 def main() -> None:
     gmrd = gitmainrootdir()
     platform = get_docker_platform(host_src_dir=str(gmrd))
     libsmctrl_dir = "/home/user/workspace/libraries/libsmctrl"
     src_dir = Path(GUEST_SRC_DIR)
 
-    rng = random.Random(42)  # Seeded RNG for reproducibility
+    rng = random.Random(seed)  # Seeded RNG for reproducibility
 
     tasksets = [generate_taskset(
         num_tasks=nb_tasks,

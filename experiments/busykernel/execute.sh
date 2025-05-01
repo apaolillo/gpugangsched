@@ -17,5 +17,4 @@ else
   fi
   docker build -t busy_kernel .
   docker run --rm --gpus all --user root -e REPORT_NAME="$SUPPLIED_FILE_NAME" -v "$(pwd)/cudaReports:/home/dockeruser/app/reports" busy_kernel
-fi  
-
+fi

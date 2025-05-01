@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.18)
 project(SchedulerBenchmark LANGUAGES CXX CUDA)
 
+find_package(CUDA  REQUIRED)
+include_directories("${CUDA_INCLUDE_DIRS}")
+
 # Set default values for build-time constants
 set(SCHEDULER_TYPE "JLFP" CACHE STRING "Scheduler type")
 set(THREADS_PER_BLOCK 256 CACHE STRING "Threads per block")
@@ -57,22 +60,34 @@ set(SOURCES
     executive/runbenchmark.cu
 )
 
-add_executable(
-    benchmark_${SCHEDULER_TYPE}
-    ${SOURCES} schedulerTestBenchmark.cu
-)
-target_link_libraries(benchmark_${SCHEDULER_TYPE}
-    PRIVATE
-        smctrl
-        cuda
-        cudart
-)
+# add_executable(
+#     benchmark_${SCHEDULER_TYPE}
+#     ${SOURCES} schedulerTestBenchmark.cu
+# )
+# target_link_libraries(benchmark_${SCHEDULER_TYPE}
+#     PRIVATE
+#         smctrl
+#         cuda
+#         cudart
+# )
+
+# add_executable(
+#     evaluation
+#     ${SOURCES} evaluation.cu
+# )
+# target_link_libraries(evaluation
+#     PRIVATE
+#         smctrl
+#         cuda
+#         cudart
+# )
+
 
 add_executable(
-    evaluation
-    ${SOURCES} evaluation.cu
+    WCET_evaluation
+    ${SOURCES} WCET_evaluation.cu
 )
-target_link_libraries(evaluation
+target_link_libraries(WCET_evaluation
     PRIVATE
         smctrl
         cuda
