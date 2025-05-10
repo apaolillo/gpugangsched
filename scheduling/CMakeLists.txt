@@ -94,5 +94,37 @@ target_link_libraries(WCET_evaluation
         cudart
 )
 
+add_executable(logsm logsm.cu)
+target_link_libraries(logsm
+    PRIVATE
+        smctrl
+        cuda
+        cudart
+)
+
+add_executable(logsm2 logsm2.cu)
+target_link_libraries(logsm2
+        PRIVATE
+        smctrl
+        cuda
+        cudart
+)
+
+add_executable(tpcscaling tpcscaling.cu)
+target_link_libraries(tpcscaling
+        PRIVATE
+        smctrl
+        cuda
+        cudart
+)
+
+add_executable(tpc_parallel_benchmark tpc_parallel_benchmark.cu)
+target_link_libraries(tpc_parallel_benchmark
+    PRIVATE
+        smctrl
+        cuda
+        cudart
+)
+
 # Link directories (libsmctrl)
 link_directories(${LIBSMCTRL_DIR})
